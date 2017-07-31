@@ -1,0 +1,32 @@
+services:
+    app.default_controller:
+        class: AppBundle\Controller\DefaultController
+        arguments: [
+          '@app.link_creator',
+          '@app.visit_registrator',
+          '@doctrine.orm.entity_manager'
+          '@serializer']
+
+    app.request_info_extractor:
+        class: AppBundle\Services\RequestInfoExtractor
+        arguments: ['@request_stack', '@app.geo_info']
+
+    app.link_creator:
+        class: AppBundle\Services\LinkCreator
+        arguments: ['@doctrine.orm.entity_manager']
+
+    app.visit_registrator:
+        class: AppBundle\Services\VisitRegistrator
+        arguments: ['@doctrine.orm.entity_manager', '@app.request_info_extractor']
+
+    app.link_deleter:
+        class: AppBundle\Services\LinkDeleter
+        arguments: ['@doctrine.orm.entity_manager']
+
+    app.link_cleaner_command:
+        class: AppBundle\Command\LinkCleanerCommand
+        arguments: ['@app.link_deleter']
+
+    app.geo_info:
+        class: AppBundle\Services\GeoInfo
+        arguments: ['@request_stack']

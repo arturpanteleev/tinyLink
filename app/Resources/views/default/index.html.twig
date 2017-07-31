@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="shorter-form">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2>Сделай ссылки проще</h2>
+                    <form method="post" action="/create/" class="input-group  input-group-lg">
+                        <span class="input-group-addon">URL</span>
+                        <input class="form-control" required name="link" placeholder="Введите URL для сокращения">
+                        <input class="form-control" name="expiredDate" type="date" placeholder="Дата удаления в формате '2000-01-01' (опционально)">
+                        <span class="input-group-btn input-group-addon">
+							<button class=" btn btn-default" type="submit">
+                                <span class="glyphicon" aria-hidden="true"></span>
+                                    Сократить
+                            </button>
+						</span>
+                    </form>
+                    <div>Все ссылки и аналитика являются открытыми и могут быть доступны кому угодно</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="promo">
+            <div class="col-lg-6">
+                <div class="marketing-block">
+                    <div class="center"><span class="glyphicon glyphicon-compressed" aria-hidden="true"></span></div>
+                    <h2>Сделай короче</h2>
+                    <p>Удобный сервис для сокращения ссылок! <br/>Попробуй и оцени преимущества!</p>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="marketing-block">
+                    <div class="center"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span></div>
+                    <h2>Анализируй</h2>
+                    <p>Аналитика поможет Вам узнать сколько раз, кто и когда пользовался ссылкой</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
