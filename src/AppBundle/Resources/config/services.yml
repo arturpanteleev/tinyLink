@@ -1,6 +1,6 @@
 services:
-    app.default_controller:
-        class: AppBundle\Controller\DefaultController
+    app.api_controller:
+        class: AppBundle\Controller\ApiController
         arguments: [
           '@app.link_creator',
           '@app.visit_registrator',

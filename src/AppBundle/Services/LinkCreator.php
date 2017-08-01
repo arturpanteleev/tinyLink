@@ -6,6 +6,10 @@ use AppBundle\Entity\Link;
 use DateTime;
 use Doctrine\ORM\EntityManager;
 
+/**
+ * Class LinkCreator
+ * @package AppBundle\Services
+ */
 class LinkCreator
 {
     /**
@@ -23,7 +27,7 @@ class LinkCreator
     }
 
     /**
-     * Создает и сохраняет ссылку
+     * Create and persist link in db
      *
      * @param  string        $originalLink
      * @param  DateTime|null $expiredTime

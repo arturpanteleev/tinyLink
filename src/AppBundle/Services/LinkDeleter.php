@@ -5,6 +5,10 @@ namespace AppBundle\Services;
 use DateTime;
 use Doctrine\ORM\EntityManager;
 
+/**
+ * Class for deleting Link entity
+ *
+ */
 class LinkDeleter
 {
     /**

@@ -23,7 +23,7 @@ class DefaultControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $link = 'http://imagine-dragons.com';
-        $client->request('POST', '/create/', [
+        $client->request('POST', '/api/create/', [
             'link' => $link,
             'expiredDate' => null,
         ]);

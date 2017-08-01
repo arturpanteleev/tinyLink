@@ -17,12 +17,13 @@ class VisitRegistrator
     /**
      * @var RequestInfoExtractor
      */
-    private $request;
+    private $requestInfoExtractor;
 
-    /**
-     * VisitCreator constructor.
-     * @param EntityManager $entityManager
-     */
+	/**
+	 * VisitRegistrator constructor.
+	 * @param EntityManager $entityManager
+	 * @param RequestInfoExtractor $requestInfoExtractor
+	 */
     public function __construct(EntityManager $entityManager, RequestInfoExtractor $requestInfoExtractor)
     {
         $this->entityManager = $entityManager;
@@ -36,9 +37,7 @@ class VisitRegistrator
     public function register(Link $link): void
     {
         $visitDate = new DateTime();
-        /**
-         * @todo прикрутить сервис получения geo инфы
-         */
+
         $geo = $this->requestInfoExtractor->getGeo();
         $userAgent = $this->requestInfoExtractor->getUserAgent();
 

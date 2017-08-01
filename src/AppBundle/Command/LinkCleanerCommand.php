@@ -8,9 +8,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Класс команды для очистки ссылок с наступившим временем удаления
- *
- * Class LinkCleanerCommand
+ * Class that start up delete old links process
  */
 class LinkCleanerCommand extends Command
 {

@@ -12,37 +12,49 @@ use Symfony\Component\HttpFoundation\RequestStack;
  */
 class RequestInfoExtractor
 {
-    /**
-     * @var Request
-     */
-    private $request;
+	/**
+	 * @var Request
+	 */
+	private $request;
 
-    /**
-     * @var GeoInfo
-     */
-    private $geoInfo;
+	/**
+	 * @var GeoInfo
+	 */
+	private $geoInfo;
 
-    /**
-     * RequestInfoExtractor constructor.
-     * @param RequestStack $requestStack
-     * @param GeoInfo      $geoInfo
-     */
-    public function __construct(RequestStack $requestStack, GeoInfo $geoInfo)
-    {
-        $this->request = $requestStack->getCurrentRequest();
-        $this->geoInfo = $geoInfo;
-    }
+	/**
+	 * RequestInfoExtractor constructor.
+	 * @param RequestStack $requestStack
+	 * @param GeoInfo $geoInfo
+	 */
+	public function __construct(RequestStack $requestStack, GeoInfo $geoInfo)
+	{
+		$this->request = $requestStack->getCurrentRequest();
+		$this->geoInfo = $geoInfo;
+	}
 
-    public function getGeo(): string
-    {
-        /**
-         * @todo компоновка
-         */
-        return $this->geoInfo->getCountry().' '.$this->geoInfo->getCity();
-    }
+	public function getGeo(): string
+	{
 
-    public function getUserAgent(): string
-    {
-        return $this->request->headers->get('User-Agent');
-    }
+		$geo = '';
+
+		$country = $this->geoInfo->getCountry();
+		if (!empty($country))
+		{
+			$geo .= $country . ' ';
+		}
+
+		$city = $this->geoInfo->getCity();
+		if (!empty($city))
+		{
+			$geo .= $city;
+		}
+
+		return $geo;
+	}
+
+	public function getUserAgent(): string
+	{
+		return $this->request->headers->get('User-Agent');
+	}
 }

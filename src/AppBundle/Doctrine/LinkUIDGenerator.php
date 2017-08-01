@@ -9,22 +9,22 @@ use Doctrine\ORM\Mapping\Entity;
 class LinkUIDGenerator extends AbstractIdGenerator
 {
     /**
-     * Максимальное кол-во попыток сгенерировать UID
+     * Max attempt to generate UID
      */
     const MAX_ATTEMPTS = 100;
 
     /**
-     * Длина ссылки после сокращения
+     * Link's length after tiny
      */
     const TINY_LINK_LENGTH = 6;
 
     /**
-     * Допустимые символы создания ссылки
+     * Sets of available symbol
      */
     const TINY_LINK_ALPHABET = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
     /**
-     * Метод генерации первичного ключа для поля tiny сущности Link
+     * Generate primary key for Link's entity
      * @param EntityManager $em
      * @param Entity        $entity
      *

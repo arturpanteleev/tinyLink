@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <h2>Сделай ссылки проще</h2>
-                    <form method="post" action="/create/" class="input-group  input-group-lg">
+                    <form method="post" action="{{ path('createLink') }}" class="input-group  input-group-lg">
                         <span class="input-group-addon">URL</span>
                         <input class="form-control" required name="link" placeholder="Введите URL для сокращения">
                         <input class="form-control" name="expiredDate" type="date" placeholder="Дата удаления в формате '2000-01-01' (опционально)">

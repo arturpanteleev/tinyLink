@@ -4,6 +4,12 @@ namespace AppBundle\Services;
 
 use Symfony\Component\HttpFoundation\RequestStack;
 
+/**
+ * Client for freegeoip.net that help extract geoInfo by ip
+ *
+ * Class GeoInfo
+ * @package AppBundle\Services
+ */
 class GeoInfo
 {
     const API_LINK = 'http://freegeoip.net/json/';
@@ -14,6 +20,8 @@ class GeoInfo
     private $ip;
 
     /**
+     * Request from online geo service
+     *
      * @var array
      */
     private $ipInfo;
