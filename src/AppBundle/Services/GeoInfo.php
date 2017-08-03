@@ -33,22 +33,24 @@ class GeoInfo
         $this->ipInfo = $this->getIpInfo();
     }
 
-    public function getCity(): string
+    public function getCity(): ?string
     {
         return $this->getIpInfoByKey('city');
     }
 
-    public function getCountry(): string
+
+    public function getCountry(): ?string
     {
         return $this->getIpInfoByKey('country_name');
     }
 
     private function getIpInfo(): array
     {
-        return (array) json_decode(file_get_contents(self::API_LINK.$this->ip));
+        return json_decode(file_get_contents(self::API_LINK.$this->ip), true);
     }
 
-    private function getIpInfoByKey(string $keyName): string
+
+    private function getIpInfoByKey(string $keyName): ?string
     {
         if (isset($this->ipInfo[$keyName])) {
             return $this->ipInfo[$keyName];

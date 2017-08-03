@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
- * Класс обертка для получения разных данных из запроса
+ * Request different data from request
  *
  * Class RequestInfoExtractor
  */
@@ -35,22 +35,9 @@ class RequestInfoExtractor
 
 	public function getGeo(): string
 	{
-
-		$geo = '';
-
-		$country = $this->geoInfo->getCountry();
-		if (!empty($country))
-		{
-			$geo .= $country . ' ';
-		}
-
-		$city = $this->geoInfo->getCity();
-		if (!empty($city))
-		{
-			$geo .= $city;
-		}
-
-		return $geo;
+		return join(' ', array_filter([
+			$this->geoInfo->getCountry(), $this->geoInfo->getCity()
+		]));
 	}
 
 	public function getUserAgent(): string

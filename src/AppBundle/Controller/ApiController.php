@@ -17,10 +17,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Serializer\Serializer;
 
-
 /**
  * Class ApiController
- *
  *
  */
 class ApiController extends Controller
@@ -80,9 +78,6 @@ class ApiController extends Controller
 
 		$expiredDateParam = $request->get('expiredDate');
 
-		 /**
-		 * @todo another validation
-		 */
 		$expiredDate = null;
 		if (!empty($expiredDateParam))
 		{
@@ -113,10 +108,10 @@ class ApiController extends Controller
 
 		$linkVisits = $link->getVisits()->getValues();
 
-		$newLinks = [];
+		$newVisits = [];
 		foreach ($linkVisits as $visit)
 		{
-			$newLinks[] = [
+			$newVisits[] = [
 				'geo'       => $visit->getGeo(),
 				'userAgent' => $visit->getUserAgent(),
 				'visitTime' => $visit->getVisitTime(),
@@ -124,7 +119,7 @@ class ApiController extends Controller
 		}
 
 		$response = new JsonResponse([
-			'linkVisits' => $newLinks,
+			'linkVisits' => $newVisits,
 			'link'       => [
 				'original' => $link->getOriginal(),
 				'tinyCode' => $link->getTiny(),
